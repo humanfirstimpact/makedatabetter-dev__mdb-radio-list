@@ -24,7 +24,7 @@ Custom property | Description | Default
     <style>
        :host {
         display: block;
-        --mdb-radio-list-selected-button-label-color: #464646;
+        --mdb-radio-list-selected-button-label-color: #fff;
       }
 
        :host paper-radio-group {
@@ -44,10 +44,8 @@ Custom property | Description | Default
       }
 
        :host ::content paper-radio-button[aria-checked="true"] {
-        -webkit-box-shadow: 0 0 15px var(--mdb-radio-list-selected-button-border-color, #71b3e1);
-        -moz-box-shadow: 0 0 15px var(--mdb-radio-list-selected-button-border-color, #71b3e1);
-        box-shadow: 0 0 15px var(--mdb-radio-list-selected-button-border-color, #71b3e1);
-        border-color: var(--mdb-radio-list-selected-button-border-color, #71b3e1);
+        border-color: var(--mdb-radio-list-selected-button-border-color, #71b3e1);        
+        background-color: #5da9dd;
       }
 
        :host ::content paper-radio-button[aria-checked="true"]+paper-radio-button {
@@ -112,7 +110,7 @@ Custom property | Description | Default
               e.noink = true;
 
               if (this.checked) {
-                this.customStyle['--paper-radio-button-label-color'] = this.getComputedStyleValue('--mdb-radio-list-selected-button-label-color') || '#464646'
+                this.customStyle['--paper-radio-button-label-color'] = this.getComputedStyleValue('--mdb-radio-list-selected-button-label-color') || '#fff'
               } else {
                 this.customStyle['--paper-radio-button-label-color'] = customStyles['--paper-radio-button-label-color'];
               }
