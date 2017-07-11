@@ -44,12 +44,16 @@ Custom property | Description | Default
       }
 
        :host ::content paper-radio-button[aria-checked="true"] {
-        border-color: var(--mdb-radio-list-selected-button-border-color, #71b3e1);        
+        border-color: var(--mdb-radio-list-selected-button-border-color, #71b3e1);
         background-color: #5da9dd;
       }
 
        :host ::content paper-radio-button[aria-checked="true"]+paper-radio-button {
         border-left: 1px solid transparent;
+      }
+
+       :host ::content paper-radio-button:not(:last-child) {
+        border-right: 0;
       }
     </style>
     <paper-radio-group selected="{{selected}}">
