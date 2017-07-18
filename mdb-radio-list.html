@@ -13,8 +13,6 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--mdb-radio-list-container` | Mixin applied to the radio list container | `{}`
 `--mdb-radio-list-button` | Mixin applied to the radio list buttons | `{}`
-`--mdb-radio-list-selected-button-border-color` | Border color of selected radio button | `#71b3e1`
-`--mdb-radio-list-selected-button-label-color` | Font color of selected radio button | `#464646`
 
 @demo demo/index.html 
 -->
@@ -24,7 +22,6 @@ Custom property | Description | Default
     <style>
        :host {
         display: block;
-        --mdb-radio-list-selected-button-label-color: #fff;
       }
 
        :host paper-radio-group {
@@ -33,8 +30,10 @@ Custom property | Description | Default
       }
 
        :host ::content paper-radio-button {
+        display: inline;
         border: 1px solid;
-        border-color: #e0e8ed;
+        border-color: var(--mdb-border-color, #000);
+        color: var(--mdb-disabled-text-dark, #000);
         @apply(--mdb-radio-list-button);
       }
 
@@ -44,8 +43,9 @@ Custom property | Description | Default
       }
 
        :host ::content paper-radio-button[aria-checked="true"] {
-        border-color: var(--mdb-radio-list-selected-button-border-color, #71b3e1);
-        background-color: #5da9dd;
+        border-color: var(--mdb-accent-color-highlight, #5da9dd);
+        background-color: var(--mdb-accent-color-highlight, #5da9dd);
+        color: var(--mdb-primary-text-light, #fff);
       }
 
        :host ::content paper-radio-button[aria-checked="true"]+paper-radio-button {
@@ -102,7 +102,7 @@ Custom property | Description | Default
           '--paper-radio-button-unchecked-color': 'transparent',
           '--paper-radio-button-checked-ink-color': 'transparent',
           '--paper-radio-button-unchecked-ink-color': 'transparent',
-          '--paper-radio-button-label-color': '#bbb',
+          '--paper-radio-button-label-color': this.getComputedStyleValue('--mdb-disabled-text-dark') || '#bbb',
           '--paper-radio-button-size': '0',
           '--paper-radio-button-label-spacing': '0'
         };
@@ -114,7 +114,7 @@ Custom property | Description | Default
               e.noink = true;
 
               if (this.checked) {
-                this.customStyle['--paper-radio-button-label-color'] = this.getComputedStyleValue('--mdb-radio-list-selected-button-label-color') || '#fff'
+                this.customStyle['--paper-radio-button-label-color'] = this.getComputedStyleValue('--mdb-primary-text-light') || '#fff'
               } else {
                 this.customStyle['--paper-radio-button-label-color'] = customStyles['--paper-radio-button-label-color'];
               }
