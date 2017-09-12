@@ -58,7 +58,7 @@ Custom property | Description | Default
         border-right: 0;
       }
     </style>
-    <paper-radio-group selected="{{selected}}">
+        <paper-radio-group selected="{{selected}}" on-tap=changeHandler>
       <content select="paper-radio-button"></content>
     </paper-radio-group>
   </template>
@@ -85,10 +85,13 @@ Custom property | Description | Default
           type: String,
           reflectToAttribute: true,
           value: 'large',
-          reflectToAttribute: true,
           observer: '_enumSize'
         },
       },
+
+            changeHandler: function (e) {
+                this.fire('recommendation-changed-Top', {"vale": e.target.innerText});
+            },
 
       _enumSize: function (newValue, oldValue) {
         var validColors = ['small', 'large'];
