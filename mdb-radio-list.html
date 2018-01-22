@@ -44,6 +44,14 @@ Custom property | Description | Default
         padding-bottom: 5px;
       }
 
+      :host[size="large"] ::content paper-radio-button {
+        padding-top: 0px;
+        padding-bottom: 3px;
+        padding-left: 17px;
+        padding-right: 17px;
+        font-size: 20px;
+      }
+
        :host ::content paper-radio-button[aria-checked="true"] {
         border-color: var(--mdb-radio-button-checked-border-color, --mdb-accent-color-highlight);
         background-color: var(--mdb-radio-button-checked-background-color, --mdb-accent-color-highlight);
