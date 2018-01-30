@@ -21,17 +21,17 @@ Custom property | Description | Default
 <dom-module id="mdb-radio-list">
   <template>
     <style>
-       :host {
+      :host {
         display: block;
         @apply(--paper-font-common-base);
       }
 
-       :host paper-radio-group {
+      :host paper-radio-group {
         white-space: nowrap;
         @apply(--mdb-radio-list-container);
       }
 
-       :host ::content paper-radio-button {
+      :host ::content paper-radio-button {
         border: 1px solid;
         border-color: var(--mdb-radio-button-border-color, --mdb-border-color);
         color: var(--mdb-radio-button-font-color, --mdb-disabled-text-dark);
@@ -39,7 +39,7 @@ Custom property | Description | Default
         @apply(--mdb-radio-list-button);
       }
 
-       :host[size="small"] ::content paper-radio-button {
+      :host[size="small"] ::content paper-radio-button {
         padding-top: 5px;
         padding-bottom: 5px;
       }
@@ -52,22 +52,22 @@ Custom property | Description | Default
         font-size: 20px;
       }
 
-       :host ::content paper-radio-button[aria-checked="true"] {
+      :host ::content paper-radio-button:not(:last-child) {
+        border-right-color: transparent;
+      }
+
+      :host ::content paper-radio-button[aria-checked="true"] {
         border-color: var(--mdb-radio-button-checked-border-color, --mdb-accent-color-highlight);
         background-color: var(--mdb-radio-button-checked-background-color, --mdb-accent-color-highlight);
         color: var(--mdb-radio-button-checked-font-color, --mdb-primary-text-light);
         @apply(--mdb-radio-list-button-checked)
       }
 
-       :host ::content paper-radio-button[aria-checked="true"]+paper-radio-button {
-        border-left: 1px solid transparent;
-      }
-
-       :host ::content paper-radio-button:not(:last-child) {
-        border-right: 0;
+      :host ::content paper-radio-button[aria-checked="true"]+paper-radio-button {
+        border-left-color: transparent;
       }
     </style>
-        <paper-radio-group selected="{{selected}}" on-tap=changeHandler>
+    <paper-radio-group selected="{{selected}}" on-tap=changeHandler>
       <content select="paper-radio-button"></content>
     </paper-radio-group>
   </template>
@@ -98,9 +98,9 @@ Custom property | Description | Default
         },
       },
 
-            changeHandler: function (e) {
-                this.fire('recommendation-changed-Top', {"vale": e.target.innerText});
-            },
+      changeHandler: function (e) {
+        this.fire('recommendation-changed-Top', { "vale": e.target.innerText });
+      },
 
       _enumSize: function (newValue, oldValue) {
         var validColors = ['small', 'large'];
